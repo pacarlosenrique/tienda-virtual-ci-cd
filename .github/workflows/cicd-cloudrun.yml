@@ -21,7 +21,7 @@ jobs:
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v2
 
-      # Deploy desde código fuente (buildpacks via Cloud Build)
+      # 🚀 Deploy usando buildpacks (Cloud Build)
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
@@ -30,9 +30,17 @@ jobs:
           region: ${{ secrets.REGION }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           source: .
-          allow_unauthenticated: true
 
-      # Smoke test básico
+      # 🔓 Hace público el servicio (equivale a allow_unauthenticated)
+      - name: Make service public
+        run: |
+          gcloud run services add-iam-policy-binding ${{ secrets.SERVICE_NAME }} \
+            --member="allUsers" \
+            --role="roles/run.invoker" \
+            --region=${{ secrets.REGION }} \
+            --project=${{ secrets.GCP_PROJECT_ID }}
+
+      # ✅ Smoke test básico (prueba rápida de disponibilidad)
       - name: Smoke test
         run: |
           echo "URL: ${{ steps.deploy.outputs.url }}"
