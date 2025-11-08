@@ -1,4 +1,4 @@
-# 🚀 CI/CD Automatizado con GitHub Actions y Google Cloud Run – Proyecto Wakamayu
+# 🚀 CI/CD Automatizado con GitHub Actions y Google Cloud Run
 
 ![Pipeline](docs/diagram-cicd-wakamayu.png)
 
