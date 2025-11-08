@@ -1,6 +1,6 @@
 # 🚀 CI/CD Automatizado con GitHub Actions y Google Cloud Run
 
-![Pipeline](docs/diagram-cicd-wakamayu.png)
+![Pipeline](docs/diagram-cicd-[PROJECT].png)
 
 ---
 
@@ -42,7 +42,7 @@ El pipeline compila, versiona y despliega el servicio **serverless** en **Cloud 
 
 ## 🔐 Roles IAM y seguridad
 
-### Service Account principal: `gh-actions-deployer@wakamayu.iam.gserviceaccount.com`
+### Service Account principal: `gh-actions-deployer@[PROJECT].iam.gserviceaccount.com`
 
 | Rol | Propósito |
 |-----|------------|
@@ -66,14 +66,14 @@ El pipeline compila, versiona y despliega el servicio **serverless** en **Cloud 
 
 ## 🧰 Scripts incluidos
 
-### 📄 `setup-wakamayu.sh`
+### 📄 `setup-[PROJECT].sh`
 Configura automáticamente el entorno CI/CD en GCP:
 - Crea el **Service Account**.  
 - Asigna los roles necesarios.  
 - Crea el **Artifact Registry**.  
 - Genera la key `key.json` (para usar como Secret en GitHub).
 
-### 📄 `cleanup-wakamayu.sh`
+### 📄 `cleanup-[PROJECT].sh`
 Desinstala los recursos del entorno:
 - Elimina servicios de Cloud Run y repositorios Artifact Registry.  
 - Limpia buckets temporales.  
@@ -90,10 +90,10 @@ Desinstala los recursos del entorno:
 │   └── workflows/
 │       └── ci-cd-cloudrun.yml     # Pipeline GitHub Actions
 ├── docs/
-│   ├── diagram-cicd-wakamayu.png  # Diagrama de componentes
+│   ├── diagram-cicd-[PROJECT].png  # Diagrama de componentes
 │   └── architecture-overview.png  # Diagrama arquitectónico
 ├── server.js                      # App Node.js simple
 ├── package.json                   # Dependencias del proyecto
-├── setup-wakamayu.sh              # Script de configuración GCP
-├── cleanup-wakamayu.sh            # Script de limpieza GCP
+├── setup-[PROJECT].sh              # Script de configuración GCP
+├── cleanup-[PROJECT].sh            # Script de limpieza GCP
 └── README.md
